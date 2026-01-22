@@ -1,6 +1,12 @@
+import { useState } from "react";
 import css from "./FormIdea.module.css";
 
 export default function FormIdea() {
+  const [title, setTitle] = useState("");
+  const [datetime, setDatetime] = useState("");
+
+  const isFormValid = title.trim() !== "" && datetime !== "";
+
   return (
     <div className={css.form_container}>
       <form>
@@ -17,6 +23,8 @@ export default function FormIdea() {
             name="title"
             placeholder="Title goes here"
             required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </label>
 
@@ -27,10 +35,19 @@ export default function FormIdea() {
 
         <label htmlFor="datetime">
           Date<span>*</span>
-          <input id="datetime" type="datetime-local" name="datetime" required />
+          <input
+            id="datetime"
+            type="datetime-local"
+            name="datetime"
+            required
+            value={datetime}
+            onChange={(e) => setDatetime(e.target.value)}
+          />
         </label>
 
-        <button type="submit">Save</button>
+        <button type="submit" disabled={!isFormValid}>
+          Save
+        </button>
       </form>
     </div>
   );
