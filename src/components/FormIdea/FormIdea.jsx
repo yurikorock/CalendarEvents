@@ -9,9 +9,10 @@ export default function FormIdea() {
           <button>x</button>
         </div>
 
-        <label>
+        <label htmlFor="title">
           Title<span>*</span>
           <input
+            id="title"
             type="text"
             name="title"
             placeholder="Title goes here"
@@ -19,15 +20,14 @@ export default function FormIdea() {
           />
         </label>
 
-        <label>
+        <label htmlFor="description">
           Description
-          <input type="text" name="description" />
+          <input id="description" type="text" name="description" />
         </label>
 
-        <label>
+        <label htmlFor="datetime">
           Date<span>*</span>
-          <input type="datetime-local" name="datetime" required ></input>
-          
+          <input id="datetime" type="datetime-local" name="datetime" required />
         </label>
 
         <button type="submit">Save</button>
