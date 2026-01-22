@@ -1,0 +1,11 @@
+.form_container{
+border-radius: 15px;
+width: 340px;
+background-color: rgb(241, 234, 234);
+padding: 16px 32px;
+}
+.form_name{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
