@@ -3,16 +3,27 @@ import css from "./FormIdea.module.css";
 
 export default function FormIdea() {
   const [title, setTitle] = useState("");
+  const [descr, setDescr] = useState("");
   const [datetime, setDatetime] = useState("");
 
   const isFormValid = title.trim() !== "" && datetime !== "";
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(title, descr, datetime);
+
+    setTitle("");
+    setDatetime("");
+    setDescr("");
+  };
+
   return (
     <div className={css.form_container}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={css.form_name}>
           <h2>Add new idea item</h2>
-          <button>x</button>
+          <button type="button">x</button>
         </div>
 
         <label htmlFor="title">
@@ -30,7 +41,13 @@ export default function FormIdea() {
 
         <label htmlFor="description">
           Description
-          <input id="description" type="text" name="description" />
+          <input
+            id="description"
+            type="text"
+            name="description"
+            value={descr}
+            onChange={(e) => setDescr(e.target.value)}
+          />
         </label>
 
         <label htmlFor="datetime">
