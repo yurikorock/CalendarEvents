@@ -34,9 +34,9 @@ export default function FormIdea({ setIsOpen }) {
 
   return (
     <div className={css.overlay} onClick={() => setIsOpen(false)}>
-      <div className={css.form_container}>
+      <div className={css.form_container} onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit}>
-          <div className={css.form_name} onClick={(e) => e.stopPropagation()}>
+          <div className={css.form_name} >
             <h2>Add new idea item</h2>
             <button type="button" onClick={() => setIsOpen(false)}>
               x
