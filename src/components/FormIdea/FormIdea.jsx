@@ -1,7 +1,7 @@
 import { useState } from "react";
 import css from "./FormIdea.module.css";
 
-export default function FormIdea() {
+export default function FormIdea({setIsOpen}) {
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [datetime, setDatetime] = useState("");
@@ -23,7 +23,7 @@ export default function FormIdea() {
       <form onSubmit={handleSubmit}>
         <div className={css.form_name}>
           <h2>Add new idea item</h2>
-          <button type="button">x</button>
+          <button type="button" onClick={()=>setIsOpen(false)}>x</button>
         </div>
 
         <label htmlFor="title">
