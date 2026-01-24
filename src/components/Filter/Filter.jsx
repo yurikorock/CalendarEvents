@@ -15,29 +15,34 @@ export default function Filter() {
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1),
     );
   };
+  //якщо рік місяць число
+  //   const handleDateChange = (e) => {
+  //     setCurrentDate(new Date(e.target.value));
+  //   };
 
-  const handleDateChange = (e) => {
-    setCurrentDate(new Date(e.target.value));
+  const handleMonthChange = (e) => {
+    const [year, month] = e.target.value.split("-");
+    setCurrentDate(new Date(year, month - 1, 1));
   };
+
+  const value = `${currentDate.getFullYear()}-${String(
+    currentDate.getMonth() + 1,
+  ).padStart(2, "0")}`;
 
   const monthYear = currentDate.toLocaleDateString("uk-UA", {
     month: "long",
     year: "numeric",
   });
 
-  const current = currentDate.toISOString().split("T")[0];
-  console.log("Date is now :", current);
+
+    // console.log("Date is now :", value);
 
   return (
     <div className={css.filter_container}>
       <button onClick={handlePrevMonth}>&lt;</button>
       <span>{monthYear}</span>
       <button onClick={handleNextMonth}>&gt;</button>
-      <input
-        type="date"
-        value={currentDate.toISOString().split("T")[0]}
-        onChange={handleDateChange}
-      />
+      <input type="month" value={value} onChange={handleMonthChange} />
     </div>
   );
 }
