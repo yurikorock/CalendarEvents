@@ -1,8 +1,8 @@
-import { useState } from "react";
+
 import css from "./FIlter.module.css";
 
-export default function Filter() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+export default function Filter({currentDate, setCurrentDate}) {
+  
 
   const handlePrevMonth = () => {
     setCurrentDate(
