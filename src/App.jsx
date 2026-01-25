@@ -9,9 +9,13 @@ function App() {
   const [currentDate, setCurrentDate] = useState(new Date());
   return (
     <>
-      <UserBar setIsOpen={setIsOpen} currentDate={currentDate} setCurrentDate={setCurrentDate}/>
+      <UserBar
+        setIsOpen={setIsOpen}
+        currentDate={currentDate}
+        setCurrentDate={setCurrentDate}
+      />
       {open && <FormIdea setIsOpen={setIsOpen} />}
-      <CalendarGrid currentDate={currentDate}/>
+      <CalendarGrid currentDate={currentDate} />
     </>
   );
 }
