@@ -1,3 +1,4 @@
+import css from "./CalendarGrid.module.css"
 import DayCell from "../DayCell/DayCell.jsx";
 
 export default function CalendarGrid({ currentDate }) {
@@ -9,8 +10,8 @@ export default function CalendarGrid({ currentDate }) {
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
   return (
-    <div>
-      <h2>CalendarGrid</h2>
+    <div className={css.container_grid}>
+  
 
       {/* Пусті клітинки перед першим днем */}
       {Array.from({ length: firstDayOfMonth }).map((_, i) => (

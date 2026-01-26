@@ -24,7 +24,13 @@ export default function FormIdea({ setIsOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(title, descr, datetime);
+    const newTask = {
+      title: title,
+      description: descr.trim(),
+      date: datetime.split("T")[0],
+    };
+
+    localStorage.setItem("newTask", JSON.stringify(newTask));
 
     setTitle("");
     setDatetime("");
@@ -36,7 +42,7 @@ export default function FormIdea({ setIsOpen }) {
     <div className={css.overlay} onClick={() => setIsOpen(false)}>
       <div className={css.form_container} onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit}>
-          <div className={css.form_name} >
+          <div className={css.form_name}>
             <h2>Add new idea item</h2>
             <button type="button" onClick={() => setIsOpen(false)}>
               x
