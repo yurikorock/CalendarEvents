@@ -1,9 +1,6 @@
-
 import css from "./FIlter.module.css";
 
-export default function Filter({currentDate, setCurrentDate}) {
-  
-
+export default function Filter({ currentDate, setCurrentDate }) {
   const handlePrevMonth = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1),
@@ -34,15 +31,23 @@ export default function Filter({currentDate, setCurrentDate}) {
     year: "numeric",
   });
 
-
-    // console.log("Date is now :", value);
+  // console.log("Date is now :", value);
 
   return (
     <div className={css.filter_container}>
-      <button onClick={handlePrevMonth}>&lt;</button>
-      <span>{monthYear}</span>
-      <button onClick={handleNextMonth}>&gt;</button>
-      <input className={css.calendar} type="month" value={value} onChange={handleMonthChange} />
+      <div className={css.button_choice}>
+        <button onClick={handlePrevMonth}>&lt;</button>
+        <span>{monthYear}</span>
+        <button onClick={handleNextMonth}>&gt;</button>
+      </div>
+
+      <input
+        className={css.calendar}
+        type="month"
+        value={value}
+        onChange={handleMonthChange}
+        name="calendar"
+      />
     </div>
   );
 }

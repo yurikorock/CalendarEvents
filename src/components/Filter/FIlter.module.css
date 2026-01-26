@@ -1,5 +1,13 @@
-// тільки для Chrome/Edge
-// ########################
+.filter_container{
+display: flex;
+flex-direction: row;
+gap: 16px;
+align-items: center;
+justify-content: center;
+}
+
+/* тільки для Chrome/Edge */
+
 
 .calendar::-webkit-datetime-edit-month-field {
     display: none;
@@ -13,8 +21,45 @@
     display: none;
 }
 
-// ########################
+/* тільки для Chrome/Edge */
 
 .calendar {
-    width: 50px;
+
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+
+
+    background-color: #3498db;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 18H5V9h14v11z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.calendar::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+/* hover */
+.calendar:hover {
+    background-color: #2e86c1;
+}
+
+/* active (натискання) */
+.calendar:active {
+    transform: scale(0.95);
+}
+
+/* focus (доступність) */
+.calendar:focus {
+    outline: 2px solid #85c1e9;
+    outline-offset: 2px;
 }
