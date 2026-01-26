@@ -1,0 +1,20 @@
+// тільки для Chrome/Edge
+// ########################
+
+.calendar::-webkit-datetime-edit-month-field {
+    display: none;
+}
+
+.calendar::-webkit-datetime-edit-year-field {
+    display: none;
+}
+
+.calendar::-webkit-datetime-edit-text {
+    display: none;
+}
+
+// ########################
+
+.calendar {
+    width: 50px;
+}

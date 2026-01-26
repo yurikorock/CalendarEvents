@@ -42,7 +42,7 @@ export default function Filter({currentDate, setCurrentDate}) {
       <button onClick={handlePrevMonth}>&lt;</button>
       <span>{monthYear}</span>
       <button onClick={handleNextMonth}>&gt;</button>
-      <input type="month" value={value} onChange={handleMonthChange} />
+      <input className={css.calendar} type="month" value={value} onChange={handleMonthChange} />
     </div>
   );
 }
