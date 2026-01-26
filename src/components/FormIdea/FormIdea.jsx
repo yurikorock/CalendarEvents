@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import css from "./FormIdea.module.css";
+import { nanoid } from "nanoid";
 
-export default function FormIdea({ setIsOpen }) {
+export default function FormIdea({ setIsOpen, setTasks }) {
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [datetime, setDatetime] = useState("");
@@ -25,12 +26,13 @@ export default function FormIdea({ setIsOpen }) {
     e.preventDefault();
 
     const newTask = {
+      id: nanoid(),
       title: title,
       description: descr.trim(),
       date: datetime.split("T")[0],
     };
 
-    localStorage.setItem("newTask", JSON.stringify(newTask));
+    setTasks((prev) => [...prev, newTask]);
 
     setTitle("");
     setDatetime("");

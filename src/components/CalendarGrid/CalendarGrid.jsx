@@ -1,7 +1,7 @@
-import css from "./CalendarGrid.module.css"
+import css from "./CalendarGrid.module.css";
 import DayCell from "../DayCell/DayCell.jsx";
 
-export default function CalendarGrid({ currentDate }) {
+export default function CalendarGrid({ currentDate, tasks }) {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
@@ -11,8 +11,6 @@ export default function CalendarGrid({ currentDate }) {
 
   return (
     <div className={css.container_grid}>
-  
-
       {/* Пусті клітинки перед першим днем */}
       {Array.from({ length: firstDayOfMonth }).map((_, i) => (
         <div key={`empty-${i}`} />
@@ -20,7 +18,14 @@ export default function CalendarGrid({ currentDate }) {
 
       {daysInMonth.map((day) => {
         const dayOfWeek = new Date(year, month, day).getDay();
-        return <DayCell key={day} day={day} dayOfWeek={dayOfWeek} />;
+
+        const fullDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+        const dayTasks = tasks.filter((task) => task.date === fullDate);
+
+        return (
+          <DayCell key={day} day={day} dayOfWeek={dayOfWeek} tasks={dayTasks} />
+        );
       })}
     </div>
   );
