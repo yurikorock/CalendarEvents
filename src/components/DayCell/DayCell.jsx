@@ -1,13 +1,30 @@
 import css from "./DayCell.module.css";
 
-export default function DayCell({ day, dayOfWeek, tasks, setIsOpen }) {
-  const weekDays = ["Mn", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+export default function DayCell({
+  day,
+  year,
+  month,
+  dayOfWeek,
+  tasks,
+  setIsOpen,
+  setSelectedDate,
+}) {
+  const weekDays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+
+  const handleCLick = () => {
+    setIsOpen(true);
+    const date = new Date(year, month, day);
+    setSelectedDate(date);
+    console.log(date);
+  };
 
   return (
-    <div className={css.container_daycell} >
+    <div className={css.container_daycell}>
       <div className={css.date}>
-        <p className={css.day} >{day}</p>
-        <p className={css.weekdays} onClick={() => setIsOpen(true)}>{weekDays[dayOfWeek]}</p>
+        <p className={css.day}>{day}</p>
+        <p className={css.weekdays} onClick={handleCLick}>
+          {weekDays[dayOfWeek]}
+        </p>
       </div>
       <ul>
         {tasks.map((task) => {

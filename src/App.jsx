@@ -10,6 +10,7 @@ function App() {
   const [tasks, setTasks] = useState(() => {
     return JSON.parse(localStorage.getItem("tasks")) ?? [];
   });
+  const [selectedDate, setSelectedDate] = useState();
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -21,8 +22,19 @@ function App() {
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
       />
-      {open && <FormIdea setIsOpen={setIsOpen} setTasks={setTasks}/>}
-      <CalendarGrid currentDate={currentDate} tasks={tasks} setIsOpen={setIsOpen}/>
+      {open && (
+        <FormIdea
+          setIsOpen={setIsOpen}
+          setTasks={setTasks}
+          currentDate={currentDate}
+        />
+      )}
+      <CalendarGrid
+        currentDate={currentDate}
+        tasks={tasks}
+        setIsOpen={setIsOpen}
+        setSelectedDate={setSelectedDate}
+      />
     </>
   );
 }
