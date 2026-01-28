@@ -1,7 +1,7 @@
 import css from "./CalendarGrid.module.css";
 import DayCell from "../DayCell/DayCell.jsx";
 
-export default function CalendarGrid({ currentDate, tasks }) {
+export default function CalendarGrid({ currentDate, tasks, setIsOpen }) {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
@@ -24,7 +24,13 @@ export default function CalendarGrid({ currentDate, tasks }) {
         const dayTasks = tasks.filter((task) => task.date === fullDate);
 
         return (
-          <DayCell key={day} day={day} dayOfWeek={dayOfWeek} tasks={dayTasks} />
+          <DayCell
+            key={day}
+            day={day}
+            dayOfWeek={dayOfWeek}
+            tasks={dayTasks}
+            setIsOpen={setIsOpen}
+          />
         );
       })}
     </div>

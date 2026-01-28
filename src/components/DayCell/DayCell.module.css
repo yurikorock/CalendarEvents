@@ -5,7 +5,7 @@
     outline: 2px solid red;
     padding: 8px;
     border-radius: 15px;
-    
+
 }
 
 .date {
@@ -15,4 +15,9 @@
     justify-content: space-between;
     width: 100%;
 
+}
+
+
+.weekdays {
+    cursor: pointer;
 }

@@ -22,7 +22,7 @@ function App() {
         setCurrentDate={setCurrentDate}
       />
       {open && <FormIdea setIsOpen={setIsOpen} setTasks={setTasks}/>}
-      <CalendarGrid currentDate={currentDate} tasks={tasks} />
+      <CalendarGrid currentDate={currentDate} tasks={tasks} setIsOpen={setIsOpen}/>
     </>
   );
 }
