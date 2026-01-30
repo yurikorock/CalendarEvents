@@ -4,3 +4,12 @@
     grid-template-rows: repeat(6, 150px);
     gap: 10px;
 }
+
+.emptyCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: 2px solid rgb(153, 0, 255);
+    padding: 8px;
+    border-radius: 15px;
+}

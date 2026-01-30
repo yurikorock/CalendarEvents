@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import css from "./FormIdea.module.css";
 import { nanoid } from "nanoid";
 
-export default function FormIdea({ setIsOpen, setTasks }) {
+export default function FormIdea({ setIsOpen, setTasks, initialDateTime }) {
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
-  const [datetime, setDatetime] = useState("");
+  const [datetime, setDatetime] = useState(initialDateTime);
 
   const isFormValid = title.trim() !== "" && datetime !== "";
 
@@ -17,6 +17,7 @@ export default function FormIdea({ setIsOpen, setTasks }) {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
