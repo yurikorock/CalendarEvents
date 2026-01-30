@@ -8,6 +8,11 @@
 
 }
 
+.activeDay {
+    background-color: #d6e6f1;
+    
+}
+
 .date {
     display: flex;
     flex-direction: row;

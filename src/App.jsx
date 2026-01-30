@@ -11,8 +11,22 @@ function App() {
   const [tasks, setTasks] = useState(() => {
     return JSON.parse(localStorage.getItem("tasks")) ?? [];
   });
+
+  // стейт для того коли юзер клікає на день в календарі
   const [selectedDate, setSelectedDate] = useState(new Date());
   const initialDateTime = formatDateForInput(selectedDate);
+
+  // // визначаємо сьогоднішній день
+  // const today = new Date();
+  // const todayToString = formatDateForInput(today);
+  // //
+  // const currentDateToString = formatDateForInput(currentDate);
+  // const isToday = todayToString === currentDateToString;
+
+  // console.log(isToday);
+
+  // console.log("todayToString:", todayToString);
+  // console.log("currentDate", currentDateToString);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -37,6 +51,7 @@ function App() {
         tasks={tasks}
         setIsOpen={setIsOpen}
         setSelectedDate={setSelectedDate}
+        
       />
     </>
   );

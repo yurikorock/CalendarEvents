@@ -8,6 +8,7 @@ export default function DayCell({
   tasks,
   setIsOpen,
   setSelectedDate,
+  isToday,
 }) {
   const weekDays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
@@ -19,7 +20,7 @@ export default function DayCell({
   };
 
   return (
-    <div className={css.container_daycell}>
+    <div className={`${css.container_daycell} ${isToday ? css.activeDay : ""}`}>
       <div className={css.date}>
         <p className={css.day}>{day}</p>
         <p className={css.weekdays} onClick={handleCLick}>

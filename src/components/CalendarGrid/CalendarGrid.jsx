@@ -1,5 +1,6 @@
 import css from "./CalendarGrid.module.css";
 import DayCell from "../DayCell/DayCell.jsx";
+import { formatDateForInput } from "../../utils/formatDate.js";
 
 export default function CalendarGrid({
   currentDate,
@@ -34,6 +35,14 @@ export default function CalendarGrid({
 
         const dayTasks = tasks.filter((task) => task.date === fullDate);
 
+        // визначаємо сьогоднішній день
+        const today = new Date();
+        const todayToString = formatDateForInput(today).split("T")[0];
+        //
+        const isToday = fullDate === todayToString;
+        {/* console.log(fullDate);
+        console.log(todayToString); */}
+
         return (
           <DayCell
             key={day}
@@ -44,6 +53,7 @@ export default function CalendarGrid({
             tasks={dayTasks}
             setIsOpen={setIsOpen}
             setSelectedDate={setSelectedDate}
+            isToday={isToday}
           />
         );
       })}
