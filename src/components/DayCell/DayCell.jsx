@@ -47,7 +47,7 @@ export default function DayCell({
               className={css.task_container}
             >
               <p>{task.title}</p>
-              {task.description && <p>{task.description}</p>}
+              {task.description && <p className={css.description}>{task.description}</p>}
             </li>
           );
         })}

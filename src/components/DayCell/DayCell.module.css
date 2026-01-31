@@ -38,5 +38,11 @@
 
 .task_container:hover {
     background-color: #d6e6f1;
-    transform:  scale(1.1);
+    transform: scale(1.1);
+}
+
+.description {
+    max-width: 150px;
+  max-height: 60px;
+    overflow: auto;
 }
