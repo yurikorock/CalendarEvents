@@ -1,9 +1,15 @@
 .container_grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 150px);
+    grid-auto-rows: minmax(140px, auto);
     gap: 10px;
+
+    padding: 12px;
+    background-color: #f5f7fa;
+    border-radius: 20px;
 }
+
+
 
 .emptyCell {
     display: flex;
