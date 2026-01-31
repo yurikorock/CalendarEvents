@@ -16,17 +16,8 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const initialDateTime = formatDateForInput(selectedDate);
 
-  // // визначаємо сьогоднішній день
-  // const today = new Date();
-  // const todayToString = formatDateForInput(today);
-  // //
-  // const currentDateToString = formatDateForInput(currentDate);
-  // const isToday = todayToString === currentDateToString;
-
-  // console.log(isToday);
-
-  // console.log("todayToString:", todayToString);
-  // console.log("currentDate", currentDateToString);
+  // стейт для редагування таски
+  const [taskToEdit, setTaskToEdit] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -44,14 +35,17 @@ function App() {
           setTasks={setTasks}
           currentDate={currentDate}
           initialDateTime={initialDateTime}
+          taskToEdit={taskToEdit}
+          setTaskToEdit={setTaskToEdit}
         />
       )}
       <CalendarGrid
         currentDate={currentDate}
         tasks={tasks}
+        setTasks={setTasks}
         setIsOpen={setIsOpen}
         setSelectedDate={setSelectedDate}
-        
+        setTaskToEdit={setTaskToEdit}
       />
     </>
   );

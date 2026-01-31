@@ -7,6 +7,8 @@ export default function CalendarGrid({
   tasks,
   setIsOpen,
   setSelectedDate,
+  setTasks,
+  setTaskToEdit,
 }) {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -51,9 +53,11 @@ export default function CalendarGrid({
             month={month}
             dayOfWeek={dayOfWeek}
             tasks={dayTasks}
+            setTasks={setTasks}
             setIsOpen={setIsOpen}
             setSelectedDate={setSelectedDate}
             isToday={isToday}
+            setTaskToEdit={setTaskToEdit}
           />
         );
       })}

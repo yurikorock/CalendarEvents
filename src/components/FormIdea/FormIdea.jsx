@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import css from "./FormIdea.module.css";
 import { nanoid } from "nanoid";
 
-export default function FormIdea({ setIsOpen, setTasks, initialDateTime }) {
+export default function FormIdea({
+  setIsOpen,
+  setTasks,
+  initialDateTime,
+  taskToEdit,
+  setTaskToEdit,
+}) {
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [datetime, setDatetime] = useState(initialDateTime);
@@ -23,22 +29,56 @@ export default function FormIdea({ setIsOpen, setTasks, initialDateTime }) {
     };
   }, [setIsOpen]);
 
+  //ТІЛЬКИ заповнення форми при редагуванні таски
+  useEffect(() => {
+    if (taskToEdit !== null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setTitle(taskToEdit.title);
+      setDescr(taskToEdit.description ?? "");
+      setDatetime(`${taskToEdit.date}T00:00`);
+    }
+    if (taskToEdit === null) {
+      setDatetime(initialDateTime);
+    }
+  }, [taskToEdit, initialDateTime]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // якщо форма порожня
+    if (taskToEdit === null) {
+      const newTask = {
+        id: nanoid(),
+        title: title,
+        description: descr.trim(),
+        date: datetime.split("T")[0],
+      };
 
-    const newTask = {
-      id: nanoid(),
-      title: title,
-      description: descr.trim(),
-      date: datetime.split("T")[0],
-    };
+      setTasks((prev) => [...prev, newTask]);
 
-    setTasks((prev) => [...prev, newTask]);
-
-    setTitle("");
-    setDatetime("");
-    setDescr("");
-    setIsOpen(false);
+      setTitle("");
+      setDatetime("");
+      setDescr("");
+      setIsOpen(false);
+    } else {
+      // редагування
+      setTasks((prev) =>
+        prev.map((task) =>
+          task.id === taskToEdit.id
+            ? {
+                ...task,
+                title,
+                description: descr.trim(),
+                date: datetime.split("T")[0],
+              }
+            : task,
+        ),
+      );
+      setTitle("");
+      setDatetime("");
+      setDescr("");
+      setIsOpen(false);
+      setTaskToEdit(null);
+    }
   };
 
   return (
@@ -46,7 +86,7 @@ export default function FormIdea({ setIsOpen, setTasks, initialDateTime }) {
       <div className={css.form_container} onClick={(e) => e.stopPropagation()}>
         <form onSubmit={handleSubmit}>
           <div className={css.form_name}>
-            <h2>Add new idea item</h2>
+            <h2>{taskToEdit ? "Edit idea item" : "Add new idea item"}</h2>
             <button type="button" onClick={() => setIsOpen(false)}>
               x
             </button>

@@ -9,6 +9,7 @@ export default function DayCell({
   setIsOpen,
   setSelectedDate,
   isToday,
+  setTaskToEdit,
 }) {
   const weekDays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
@@ -19,11 +20,14 @@ export default function DayCell({
     // console.log(date);
   };
 
-  const editTaskInForm = () => {
+  const editTaskInForm = (task) => {
+    setTaskToEdit(task);
     setIsOpen(true);
     const date = new Date(year, month, day);
     setSelectedDate(date);
-    console.log(date);
+    // console.log(date);
+
+    // console.log("Редагуємо таск:", task);
   };
 
   return (
@@ -39,7 +43,7 @@ export default function DayCell({
           return (
             <li
               key={task.id}
-              onClick={editTaskInForm}
+              onClick={() => editTaskInForm(task)}
               className={css.task_container}
             >
               <p>{task.title}</p>
