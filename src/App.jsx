@@ -4,10 +4,11 @@ import FormIdea from "./components/FormIdea/FormIdea.jsx";
 import UserBar from "./components/UserBar/UserBar.jsx";
 import CalendarGrid from "./components/CalendarGrid/CalendarGrid.jsx";
 import { formatDateForInput } from "./utils/formatDate.js";
+import getInitialDate from "./utils/getInitialDate.js";
 
 function App() {
   const [open, setIsOpen] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(getInitialDate);
   const [tasks, setTasks] = useState(() => {
     return JSON.parse(localStorage.getItem("tasks")) ?? [];
   });
@@ -22,6 +23,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+  //при перезавантаження сторінки зберігаємо в локалсторадж фільтри календаря
+  useEffect(() => {
+    const value = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1,
+    ).padStart(2, "0")}`;
+
+    localStorage.setItem("calendarCurrentMonth", value);
+  }, [currentDate]);
   return (
     <>
       <UserBar
