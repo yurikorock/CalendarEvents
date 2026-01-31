@@ -10,7 +10,7 @@
 
 .activeDay {
     background-color: #d6e6f1;
-    
+
 }
 
 .date {
@@ -22,6 +22,21 @@
 
 }
 
-.weekdays {
+.tasks_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.day {
     cursor: pointer;
+}
+
+.task_container {
+    cursor: pointer;
+    transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+.task_container:hover {
+    background-color: #d6e6f1;
+    transform:  scale(1.1);
 }

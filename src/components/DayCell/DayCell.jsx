@@ -16,21 +16,32 @@ export default function DayCell({
     setIsOpen(true);
     const date = new Date(year, month, day);
     setSelectedDate(date);
+    // console.log(date);
+  };
+
+  const editTaskInForm = () => {
+    setIsOpen(true);
+    const date = new Date(year, month, day);
+    setSelectedDate(date);
     console.log(date);
   };
 
   return (
     <div className={`${css.container_daycell} ${isToday ? css.activeDay : ""}`}>
       <div className={css.date}>
-        <p className={css.day}>{day}</p>
-        <p className={css.weekdays} onClick={handleCLick}>
-          {weekDays[dayOfWeek]}
+        <p className={css.day} onClick={handleCLick}>
+          {day}{" "}
         </p>
+        <p className={css.weekdays}>{weekDays[dayOfWeek]}</p>
       </div>
-      <ul>
+      <ul className={css.tasks_list}>
         {tasks.map((task) => {
           return (
-            <li key={task.id}>
+            <li
+              key={task.id}
+              onClick={editTaskInForm}
+              className={css.task_container}
+            >
               <p>{task.title}</p>
               {task.description && <p>{task.description}</p>}
             </li>
